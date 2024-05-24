@@ -30,10 +30,10 @@ export async function insertPessoaService(data: PessoaInterface) {
 	}
 }
 
-export async function deletePessoaService(id: string) {
+export async function deletePessoaService(data: any) {
 	try {
-		console.log('Deleting Pessoa', id);
-		return;
+		const response = await Pessoa.deleteOne({ _id: data.id });
+		return response;
 	} catch (error) {
 		console.error('Erro ao deletar funcionário.', error);
 	}
