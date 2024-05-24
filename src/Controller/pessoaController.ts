@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { getPessoasService, insertPessoaService } from '../Service/pessoaService';
+import { getPessoasService, insertPessoaService, deletePessoaService } from '../Service/pessoaService';
 
 export async function getPessoas(req: Request, res: Response) {
 	try {
@@ -14,6 +14,16 @@ export async function insertPessoa(req: Request, res: Response) {
 	try {
 		const data: any = req.body;
 		const response = await insertPessoaService(data);
+		return res.status(201).json(response);
+	} catch (error: any) {
+		return res.status(500).json({ error: 'Por favor, tente mais tarde!' });
+	}
+}
+
+export async function deletePessoa(req: Request, res: Response) {
+	try {
+		const id: any = req.params;
+		const response = await deletePessoaService(id);
 		return res.status(201).json(response);
 	} catch (error: any) {
 		return res.status(500).json({ error: 'Por favor, tente mais tarde!' });

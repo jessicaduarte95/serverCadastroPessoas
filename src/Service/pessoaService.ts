@@ -29,3 +29,12 @@ export async function insertPessoaService(data: PessoaInterface) {
 		console.error('Erro ao adicionar funcionário.', error);
 	}
 }
+
+export async function deletePessoaService(id: string) {
+	try {
+		console.log('Deleting Pessoa', id);
+		return;
+	} catch (error) {
+		console.error('Erro ao deletar funcionário.', error);
+	}
+}
