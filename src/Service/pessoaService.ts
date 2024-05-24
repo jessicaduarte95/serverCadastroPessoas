@@ -26,7 +26,16 @@ export async function insertPessoaService(data: PessoaInterface) {
 
 		return response;
 	} catch (error) {
-		console.error('Erro ao adicionar funcionário.', error);
+		console.error('Erro ao adicionar pessoa.', error);
+	}
+}
+
+export async function updatePessoaService(id: any, data: any) {
+	try {
+		const updateFuncionario = await Pessoa.findOneAndUpdate({ _id: id }, data);
+		return updateFuncionario;
+	} catch (error) {
+		console.error('Erro ao alterar pessoa.', error);
 	}
 }
 
@@ -35,6 +44,6 @@ export async function deletePessoaService(data: any) {
 		const response = await Pessoa.deleteOne({ _id: data.id });
 		return response;
 	} catch (error) {
-		console.error('Erro ao deletar funcionário.', error);
+		console.error('Erro ao deletar pessoa.', error);
 	}
 }
