@@ -32,9 +32,11 @@ export async function insertPessoaService(data: PessoaInterface) {
 
 export async function updatePessoaService(id: any, data: any) {
 	try {
-		console.log('Updating', id, data);
-		// const updateFuncionario = await Pessoa.findOneAndUpdate({ _id: id }, data);
-		return;
+		await Pessoa.findOneAndUpdate({ _id: id.id }, data);
+		const findPessoa = await Pessoa.find({
+			_id: id.id
+		});
+		return findPessoa;
 	} catch (error) {
 		console.error('Erro ao alterar pessoa.', error);
 	}
