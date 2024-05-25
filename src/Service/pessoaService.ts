@@ -33,10 +33,11 @@ export async function insertPessoaService(data: PessoaInterface) {
 export async function updatePessoaService(id: any, data: any) {
 	try {
 		await Pessoa.findOneAndUpdate({ _id: id.id }, data);
-		const findPessoa = await Pessoa.find({
-			_id: id.id
-		});
-		return findPessoa;
+		const dataFilter = {
+			nome: '',
+			email: ''
+		};
+		return getPessoasService(dataFilter);
 	} catch (error) {
 		console.error('Erro ao alterar pessoa.', error);
 	}
